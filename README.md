@@ -1,5 +1,11 @@
 # Minimal ![Build Status](https://travis-ci.org/avjinder/Minimal-Todo.svg?branch=master)
 
+#Screenshots:
+<img src="/screenshots/main_empty_light.png" height="400px"/>
+<img src="/screenshots/main_empty_dark.png" height="400px"/>
+<img src="/screenshots/main_full_light.png" height="400px"/>
+<img src="/screenshots/main_full_dark.png" height="400px"/>
+
 #License:
 The MIT License (MIT)
 
