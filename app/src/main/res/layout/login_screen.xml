@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--<ImageView android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="72dp"
+                android:layout_marginBottom="24dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="AppLogo" />-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:padding="32dp"
+                android:text="@string/app_name"
+                android:textSize="42sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:tag="email_edittext" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:tag="password_edittext" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/custom_signin_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:tag="custom_login_button"
+                    android:text="@string/sign_in" />
+
+                <Button
+                    android:id="@+id/custom_signup_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:tag="custom_signup_button"
+                    android:text="@string/sign_up_button" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/facebook_login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_facebook_white_36dp"
+                    android:drawableStart="@drawable/ic_facebook_white_36dp"
+                    android:tag="facebook_login_button"
+                    android:text="@string/sign_in_facebook" />
+
+                <Button
+                    android:id="@+id/google_login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_google_plus_white_36dp"
+                    android:drawableStart="@drawable/ic_google_plus_white_36dp"
+                    android:tag="google_login_button"
+                    android:text="@string/sign_in_google" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

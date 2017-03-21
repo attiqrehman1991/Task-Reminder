@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/test"
+        layout="@layout/login_screen" />
+
+    <com.attiqrao.systemsltd.list_to_do.view.SplashView
+        android:id="@+id/splash_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:duration="500"
+        app:holeFillColor="@color/amber"
+        app:icon="@drawable/logo"
+        app:iconColor="@color/accent"
+        app:removeFromParentOnEnd="true" />
+
+
+</FrameLayout>

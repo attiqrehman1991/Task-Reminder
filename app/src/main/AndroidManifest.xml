@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.avjindersinghsekhon.minimaltodo" >
+    package="com.attiqrao.systemsltd.list_to_do">
 
-    <uses-permission android:name="ANDROID.PERMISSION.INTERNET"/>
-    <uses-permission android:name="ANDROID.PERMISSION.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="ANDROID.PERMISSION.INTERNET" />
+    <uses-permission android:name="ANDROID.PERMISSION.ACCESS_NETWORK_STATE" />
 
     <!--We set theme to DarkTheme because when the app opens it shows
     a white screen if our theme here is LightTheme. The screen is shown for
     about 1 second, but it's jarring if users have set Night Mode to true.
     -->
     <application
-        android:name=".AnalyticsApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_icon"
         android:label="@string/app_name"
-        android:theme="@style/CustomStyle.DarkTheme"
-        >
+        android:theme="@style/CustomStyle.DarkTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.attiqrao.systemsltd.list_to_do.SplashScreen"
+            android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,26 +27,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddToDoActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"
-            />
+        <activity
+            android:name="com.attiqrao.systemsltd.list_to_do.MainActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".AboutActivity"
+        <activity
+            android:name="com.attiqrao.systemsltd.list_to_do.AddToDoActivity"
+            android:parentActivityName="com.attiqrao.systemsltd.list_to_do.MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.attiqrao.systemsltd.list_to_do.AboutActivity"
             android:label="@string/app_name"
-            android:parentActivityName=".MainActivity"
-            />
+            android:parentActivityName="com.attiqrao.systemsltd.list_to_do.MainActivity" />
 
-        <activity android:name=".ReminderActivity"
-            android:label="@string/app_name"
-            />
+        <activity
+            android:name="com.attiqrao.systemsltd.list_to_do.ReminderActivity"
+            android:label="@string/app_name" />
 
-        <service android:name=".TodoNotificationService"
-            />
-        <service android:name=".DeleteNotificationService"
-            />
-        <activity android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity"
+        <service android:name="com.attiqrao.systemsltd.list_to_do.TodoNotificationService" />
+        <service android:name="com.attiqrao.systemsltd.list_to_do.DeleteNotificationService" />
+
+        <activity
+            android:name="com.attiqrao.systemsltd.list_to_do.SettingsActivity"
+            android:parentActivityName="com.attiqrao.systemsltd.list_to_do.MainActivity"
 
             />
 

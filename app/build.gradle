@@ -2,22 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    signingConfigs {
-        release {
-            keyAlias ''
-            keyPassword ''
-            storeFile file('/Users/avjindersinghsekhon/androidapps.jks')
-            storePassword ''
-        }
-    }
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '25.0.0'
     defaultConfig {
-        applicationId "com.avjindersinghsekhon.minimaltodo"
+        applicationId "com.attiqrao.systemsltd.list_to_do"
         minSdkVersion 16
         targetSdkVersion 23
-        versionCode 3
-        versionName "1.2"
+        versionCode 1
+        versionName "0.1"
     }
     buildTypes {
         release {
@@ -25,15 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
-    lintOptions {
-        abortOnError false
-    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.gms:play-services-analytics:7.8.0'
     compile 'uk.co.chrisjenx:calligraphy:2.1.0'
     compile 'com.github.ganfra:material-spinner:1.1.0'
     compile 'com.wdullaer:materialdatetimepicker:1.5.1'
@@ -42,5 +29,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:23.1.0'
     compile 'com.android.support:design:23.1.0'
     compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:cardview-v7:23.1.0'
     compile 'com.android.support:support-v13:23.1.0'
 }

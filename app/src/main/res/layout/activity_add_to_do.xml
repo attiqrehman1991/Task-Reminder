@@ -28,7 +28,7 @@
                 android:layout_height="0dp">
 
 
-                <com.example.avjindersinghsekhon.minimaltodo.CustomTextInputLayout
+                <com.attiqrao.systemsltd.list_to_do.CustomTextInputLayout
                     app:hintTextAppearance="@style/FloatingLabelTextAppearance"
                     android:id="@+id/toDoCustomTextInput"
                     android:gravity="center"
@@ -48,7 +48,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                </com.example.avjindersinghsekhon.minimaltodo.CustomTextInputLayout>
+                </com.attiqrao.systemsltd.list_to_do.CustomTextInputLayout>
 
             </LinearLayout>
             <LinearLayout
@@ -57,6 +57,27 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="0dp">
+
+                <com.attiqrao.systemsltd.list_to_do.CustomTextInputLayout
+                    android:id="@+id/toDoCustomDescInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:hintTextAppearance="@style/FloatingLabelTextAppearance">
+
+                    <EditText
+                        android:id="@+id/userToDoEditDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginRight="32dp"
+                        android:gravity="start|bottom"
+                        android:hint="@string/desc"
+                        android:inputType="textAutoCorrect|textCapSentences"
+                        android:lines="2"
+                        android:maxLines="3" />
+
+                </com.attiqrao.systemsltd.list_to_do.CustomTextInputLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
