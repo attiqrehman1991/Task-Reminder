@@ -1,4 +1,4 @@
-# Minimal ![Build Status](https://travis-ci.org/avjinder/Minimal-Todo.svg?branch=master)
+# Task Reminder ![Build Status](https://travis-ci.org/avjinder/Minimal-Todo.svg?branch=master)
 
 #Screenshots:
 <img src="/screenshots/main_empty_light.png" height="400px"/>
@@ -9,7 +9,7 @@
 #License:
 The MIT License (MIT)
 
-Copyright (c) 2015 Avjinder
+Copyright (c) 2015 Attiq Ur Rehman
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
