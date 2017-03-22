@@ -14,20 +14,23 @@ public class ToDoItem implements Serializable {
     //    private static final String TODOLASTEDITED = "todolastedited";
     private static final String TODOCOLOR = "todocolor";
     private static final String TODODATE = "tododate";
+    private static final String FROMDODATE = "fromdodate";
     private static final String TODOIDENTIFIER = "todoidentifier";
     private String mToDoText, mTodoDesc;
     private boolean mHasReminder;
     //    private Date mLastEdited;
     private int mTodoColor;
     private Date mToDoDate;
+    private Date mFromDoDate;
     private UUID mTodoIdentifier;
 
 
-    public ToDoItem(String todoBody, String todoDesc, boolean hasReminder, Date toDoDate) {
+    public ToDoItem(String todoBody, String todoDesc, boolean hasReminder, Date toDoDate, Date fromDoDate) {
         mToDoText = todoBody;
         mHasReminder = hasReminder;
         mToDoDate = toDoDate;
         mTodoDesc = todoDesc;
+        mFromDoDate = fromDoDate;
         mTodoColor = 1677725;
         mTodoIdentifier = UUID.randomUUID();
     }
@@ -45,10 +48,13 @@ public class ToDoItem implements Serializable {
         if (jsonObject.has(TODODATE)) {
             mToDoDate = new Date(jsonObject.getLong(TODODATE));
         }
+        if (jsonObject.has(FROMDODATE)) {
+            mFromDoDate = new Date(jsonObject.getLong(FROMDODATE));
+        }
     }
 
     public ToDoItem() {
-        this("Clean my room", "why should i clean my room", true, new Date());
+        this("Clean my room", "why should i clean my room", true, new Date(), new Date());
     }
 
     public JSONObject toJSON() throws JSONException {
@@ -59,6 +65,9 @@ public class ToDoItem implements Serializable {
 //        jsonObject.put(TODOLASTEDITED, mLastEdited.getTime());
         if (mToDoDate != null) {
             jsonObject.put(TODODATE, mToDoDate.getTime());
+        }
+        if (mFromDoDate != null) {
+            jsonObject.put(FROMDODATE, mFromDoDate.getTime());
         }
         jsonObject.put(TODOCOLOR, mTodoColor);
         jsonObject.put(TODOIDENTIFIER, mTodoIdentifier.toString());
@@ -96,6 +105,14 @@ public class ToDoItem implements Serializable {
 
     public void setToDoDate(Date mToDoDate) {
         this.mToDoDate = mToDoDate;
+    }
+
+    public Date getFromDoDate() {
+        return mFromDoDate;
+    }
+
+    public void setFromDoDate(Date mFromDoDate) {
+        this.mFromDoDate = mFromDoDate;
     }
 
     public int getTodoColor() {

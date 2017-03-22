@@ -42,9 +42,9 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
     private EditText mToDoTextBodyEditText, mToDoTextBodyEditDesc;
     private SwitchCompat mToDoDateSwitch;
     //    private TextView mLastSeenTextView;
-    private LinearLayout mUserDateSpinnerContainingLinearLayout;
+    private LinearLayout mUserDateSpinnerContainingLinearLayout, mUserDateSpinnerContainingLinearLayout1;
     private TextView mReminderTextView;
-    private EditText mDateEditText;
+    private EditText mDateEditText, mDateEditText1;
     private EditText mTimeEditText;
     private String mDefaultTimeOptions12H[];
     private String mDefaultTimeOptions24H[];
@@ -56,7 +56,7 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
     private String mUserEnteredDesc;
     private boolean mUserHasReminder;
     private Toolbar mToolbar;
-    private Date mUserReminderDate;
+    private Date mUserReminderDate, mUserReminderDate1;
     private int mUserColor;
     private boolean setDateButtonClickedOnce = false;
     private boolean setTimeButtonClickedOnce = false;
@@ -119,6 +119,7 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
         mUserHasReminder = mUserToDoItem.hasReminder();
         mUserEnteredDesc = mUserToDoItem.getTodoDesc();
         mUserReminderDate = mUserToDoItem.getToDoDate();
+        mUserReminderDate1 = mUserToDoItem.getFromDoDate();
         mUserColor = mUserToDoItem.getTodoColor();
 
 
@@ -140,7 +141,8 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
 
         mContainerLayout = (LinearLayout) findViewById(R.id.todoReminderAndDateContainerLayout);
         mUserDateSpinnerContainingLinearLayout = (LinearLayout) findViewById(R.id.toDoEnterDateLinearLayout);
-        mToDoTextBodyEditText = (EditText) findViewById(R.id.userToDoEditText);
+        mUserDateSpinnerContainingLinearLayout1 = (LinearLayout) findViewById(R.id.toDoEnterDateLinearLayout1);
+        mToDoTextBodyEditText = (EditText) findViewById(R.id.userToDoEditTitle);
         mToDoTextBodyEditDesc = (EditText) findViewById(R.id.userToDoEditDesc);
         mToDoDateSwitch = (SwitchCompat) findViewById(R.id.toDoHasDateSwitchCompat);
 //        mLastSeenTextView = (TextView)findViewById(R.id.toDoLastEditedTextView);
@@ -177,6 +179,23 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
         mToDoTextBodyEditText.setSelection(mToDoTextBodyEditText.length());
 
+        mToDoTextBodyEditDesc.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mUserEnteredDesc = s.toString();
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         mToDoTextBodyEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -236,6 +255,7 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
 
 
         mDateEditText = (EditText) findViewById(R.id.newTodoDateEditText);
+        mDateEditText1 = (EditText) findViewById(R.id.newTodoDateEditText1);
         mTimeEditText = (EditText) findViewById(R.id.newTodoTimeEditText);
 
         mDateEditText.setOnClickListener(new View.OnClickListener() {
@@ -266,29 +286,31 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
             }
         });
 
-
-        mTimeEditText.setOnClickListener(new View.OnClickListener() {
+        mDateEditText1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Date date;
                 hideKeyboard(mToDoTextBodyEditText);
-                if (mUserToDoItem.getToDoDate() != null) {
+                if (mUserToDoItem.getFromDoDate() != null) {
 //                    date = mUserToDoItem.getToDoDate();
-                    date = mUserReminderDate;
+                    date = mUserReminderDate1;
                 } else {
                     date = new Date();
                 }
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(date);
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute = calendar.get(Calendar.MINUTE);
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH);
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(AddToDoActivity.this, hour, minute, DateFormat.is24HourFormat(AddToDoActivity.this));
+
+                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(AddToDoActivity.this, year, month, day);
                 if (theme.equals(MainActivity.DARKTHEME)) {
-                    timePickerDialog.setThemeDark(true);
+                    datePickerDialog.setThemeDark(true);
                 }
-                timePickerDialog.show(getFragmentManager(), "TimeFragment");
+                datePickerDialog.show(getFragmentManager(), "DateFragment1");
+
             }
         });
 
@@ -357,6 +379,7 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
 
         if (mUserToDoItem.hasReminder() && mUserReminderDate != null) {
             String userDate = formatDate("d MMM, yyyy", mUserReminderDate);
+            String userFromDate = formatDate("d MMM, yyyy", mUserReminderDate1);
             String formatToUse;
             if (DateFormat.is24HourFormat(this)) {
                 formatToUse = "k:mm";
@@ -367,9 +390,11 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
             String userTime = formatDate(formatToUse, mUserReminderDate);
             mTimeEditText.setText(userTime);
             mDateEditText.setText(userDate);
+            mDateEditText1.setText(userFromDate);
 
         } else {
             mDateEditText.setText(getString(R.string.date_reminder_default));
+            mDateEditText1.setText(getString(R.string.date_reminder_default));
 //            mUserReminderDate = new Date();
             boolean time24 = DateFormat.is24HourFormat(this);
             Calendar cal = Calendar.getInstance();
@@ -380,6 +405,7 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
             }
             cal.set(Calendar.MINUTE, 0);
             mUserReminderDate = cal.getTime();
+            mUserReminderDate1 = cal.getTime();
             Log.d("OskarSchindler", "Imagined Date: " + mUserReminderDate);
             String timeString;
             if (time24) {
@@ -421,7 +447,7 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
     }
 
-    public void setDate(int year, int month, int day) {
+    public void setDate(int year, int month, int day, boolean isToDate) {
         Calendar calendar = Calendar.getInstance();
         int hour, minute;
 //        int currentYear = calendar.get(Calendar.YEAR);
@@ -449,10 +475,15 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
         minute = calendar.get(Calendar.MINUTE);
 
         calendar.set(year, month, day, hour, minute);
-        mUserReminderDate = calendar.getTime();
         setReminderTextView();
 //        setDateAndTimeEditText();
-        setDateEditText();
+        if (isToDate) {
+            setDateEditText();
+            mUserReminderDate = calendar.getTime();
+        } else {
+            setDateEditText1();
+            mUserReminderDate1 = calendar.getTime();
+        }
     }
 
     public void setTime(int hour, int minute) {
@@ -480,6 +511,12 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
     public void setDateEditText() {
         String dateFormat = "d MMM, yyyy";
         mDateEditText.setText(formatDate(dateFormat, mUserReminderDate));
+    }
+
+
+    public void setDateEditText1() {
+        String dateFormat = "d MMM, yyyy";
+        mDateEditText1.setText(formatDate(dateFormat, mUserReminderDate));
     }
 
     public void setTimeEditText() {
@@ -539,8 +576,15 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
             calendar.set(Calendar.SECOND, 0);
             mUserReminderDate = calendar.getTime();
         }
+        if (mUserReminderDate1 != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(mUserReminderDate1);
+            calendar.set(Calendar.SECOND, 0);
+            mUserReminderDate1 = calendar.getTime();
+        }
         mUserToDoItem.setHasReminder(mUserHasReminder);
         mUserToDoItem.setToDoDate(mUserReminderDate);
+        mUserToDoItem.setFromDoDate(mUserReminderDate1);
         mUserToDoItem.setTodoColor(mUserColor);
         i.putExtra(MainActivity.TODOITEM, mUserToDoItem);
         setResult(result, i);
@@ -578,14 +622,19 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
 
     @Override
     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
-        setDate(year, month, day);
+        if (datePickerDialog.getTag().equals("DateFragment"))
+            setDate(year, month, day, true);
+        if (datePickerDialog.getTag().equals("DateFragment1"))
+            setDate(year, month, day, false);
     }
 
     public void setEnterDateLayoutVisible(boolean checked) {
         if (checked) {
             mUserDateSpinnerContainingLinearLayout.setVisibility(View.VISIBLE);
+            mUserDateSpinnerContainingLinearLayout1.setVisibility(View.VISIBLE);
         } else {
             mUserDateSpinnerContainingLinearLayout.setVisibility(View.INVISIBLE);
+            mUserDateSpinnerContainingLinearLayout1.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -612,6 +661,26 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
                         }
                     }
             );
+            mUserDateSpinnerContainingLinearLayout1.animate().alpha(1.0f).setDuration(500).setListener(
+                    new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            mUserDateSpinnerContainingLinearLayout1.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+                        }
+                    }
+            );
         } else {
             mUserDateSpinnerContainingLinearLayout.animate().alpha(0.0f).setDuration(500).setListener(
                     new Animator.AnimatorListener() {
@@ -623,6 +692,29 @@ public class AddToDoActivity extends AppCompatActivity implements DatePickerDial
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             mUserDateSpinnerContainingLinearLayout.setVisibility(View.INVISIBLE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    }
+            );
+            mUserDateSpinnerContainingLinearLayout1.animate().alpha(0.0f).setDuration(500).setListener(
+                    new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            mUserDateSpinnerContainingLinearLayout1.setVisibility(View.INVISIBLE);
                         }
 
                         @Override
