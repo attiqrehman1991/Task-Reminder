@@ -3,11 +3,10 @@
 #Screenshots:
 <img src="/screenshots/SplashScreen.png" height="400px"/>
 <img src="/screenshots/LoginScreen.png" height="400px"/>
-<img src="/screenshots/MainReminderScreen.png" height="400px"/>
 <img src="/screenshots/Add Edit Screen.png" height="400px"/>
+<img src="/screenshots/MainReminderScreen.png" height="400px"/>
 
-#License:
-MIT License
+# MIT License
 
 Copyright (c) 2017 Attiq ur Rehman
 
@@ -28,5 +27,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
 
