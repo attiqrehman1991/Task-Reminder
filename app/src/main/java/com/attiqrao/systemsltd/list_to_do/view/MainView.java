@@ -7,9 +7,11 @@ import android.widget.FrameLayout;
 import com.attiqrao.systemsltd.list_to_do.R;
 
 /**
- * A simple frame layout with 2 child views, one for content one for splash
+ *  A simple frame layout with 2 child views, one for content one for splash
  *
- * @author yildizkabaran
+ * Created by Attiq ur Rehman on 3/29/2017.
+ * Senior Software Engineer at Systems Ltd
+ * attiq.ur.rehman1991@gmail.com
  */
 public class MainView extends FrameLayout {
 

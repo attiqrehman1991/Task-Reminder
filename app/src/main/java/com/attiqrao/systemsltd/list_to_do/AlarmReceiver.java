@@ -4,18 +4,23 @@ import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.WakefulBroadcastReceiver;
 
 import java.util.Calendar;
+
+/*
+ *
+ * Created by Attiq ur Rehman on 3/29/2017.
+ * Senior Software Engineer at Systems Ltd
+ * attiq.ur.rehman1991@gmail.com
+ */
 
 public class AlarmReceiver extends WakefulBroadcastReceiver {
     AlarmManager mAlarmManager;

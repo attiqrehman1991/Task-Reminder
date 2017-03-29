@@ -1,6 +1,12 @@
 package com.attiqrao.systemsltd.list_to_do;
 
-// Class to create DateTime objects for easy sorting
+/*
+ *
+ * Created by Attiq ur Rehman on 3/29/2017.
+ * Senior Software Engineer at Systems Ltd
+ * attiq.ur.rehman1991@gmail.com
+ */
+
 public class DateTimeSorter {
     public int mIndex;
     public String mDateTime;
