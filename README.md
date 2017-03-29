@@ -3,8 +3,8 @@
 #Screenshots:
 <img src="/screenshots/SplashScreen.png" height="400px"/>
 <img src="/screenshots/LoginScreen.png" height="400px"/>
-<img src="/screenshots/Add Edit Screen.png" height="400px"/>
-<img src="/screenshots/MainReminderScreen.png" height="400px"/>
+<img src="/screenshots/HomeScreen.png" height="400px"/>
+<img src="/screenshots/TaskScreen.png" height="400px"/>
 
 # MIT License
 
