@@ -51,36 +51,19 @@
         <EditText
             android:id="@+id/reminder_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginEnd="16dp"
-            android:gravity="top|left"
-            android:hint="@string/add_reminder"
-            android:inputType="textCapWords"
-            android:lines="4"
-            android:minLines="4"
-            android:scrollHorizontally="false"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/primary_text_disabled_material_dark"
-            android:textSize="25dp" />
-
-        <EditText
-            android:id="@+id/reminder_desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="144dp"
+            android:layout_marginEnd="72dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="72dp"
-            android:layout_marginEnd="72dp"
             android:gravity="top|left"
-            android:hint="@string/add_desc"
+            android:hint="@string/add_reminder"
             android:inputType="textCapWords|textMultiLine"
             android:lines="4"
             android:minLines="4"
             android:scrollHorizontally="false"
             android:textColor="@android:color/white"
             android:textColorHint="@color/primary_text_disabled_material_dark"
-            android:textSize="19dp" />
+            android:textSize="25dp" />
 
     </LinearLayout>
 
@@ -94,115 +77,129 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/date"
+            <EditText
+                android:id="@+id/reminder_desc"
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="setDate">
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="24dp"
+                android:gravity="top|left"
+                android:hint="@string/add_desc"
+                android:inputType="textCapWords"
+                android:lines="4"
+                android:minLines="4"
+                android:scrollHorizontally="false"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/primary_text_disabled_material_dark"
+                android:textSize="19dp" />
 
-                <ImageView
-                    android:id="@+id/date_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_view_day_grey600_24dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/date_icon"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/date_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/date"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/set_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/time"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="setTime">
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/time_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_access_time_grey600_24dp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/time_icon"
-                    android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:onClick="setDate">
 
-                    <TextView
-                        android:id="@+id/time_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/time"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp">
 
-                    <TextView
-                        android:id="@+id/set_time"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/date_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/date"
+                            android:textColor="@color/abc_primary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/set_date"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/set_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sample date"
+                            android:textColor="@color/abc_secondary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/date_text"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            </RelativeLayout>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:onClick="setTime">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp">
+
+
+                        <TextView
+                            android:id="@+id/time_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/time"
+                            android:textColor="@color/abc_primary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/set_time"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/set_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/time"
+                            android:textColor="@color/abc_secondary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/time_text"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/repeat"
                 android:layout_width="match_parent"
                 android:layout_height="72dp">
 
-                <ImageView
-                    android:id="@+id/repeat_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_sync_grey600_24dp" />
-
                 <LinearLayout
                     android:id="@+id/repeat_ll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/repeat_icon"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -237,93 +234,92 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/RepeatNo"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="setRepeatNo">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/repeat_no_icon"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/RepeatNo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_unfold_more_grey600_24dp" />
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:onClick="setRepeatNo">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/repeat_no_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/repeat_no"
+                            android:textColor="@color/abc_primary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/set_repeat_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="45"
+                            android:textColor="@color/abc_secondary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/repeat_no_text"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </android.support.constraint.ConstraintLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/RepeatType"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/repeat_no_icon"
-                    android:orientation="vertical">
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:onClick="selectRepeatType">
 
-                    <TextView
-                        android:id="@+id/repeat_no_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/repeat_no"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/set_repeat_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
+                        <TextView
+                            android:id="@+id/repeat_type_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/repeat_type"
+                            android:textColor="@color/abc_primary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/set_repeat_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="45"
+                            android:textColor="@color/abc_secondary_text_material_dark"
+                            android:textSize="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/repeat_type_text"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/RepeatType"
-                android:layout_width="match_parent"
-                android:layout_height="72dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="selectRepeatType">
-
-                <ImageView
-                    android:id="@+id/repeat_type_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="32dp"
-                    android:src="@drawable/ic_subject_grey600_24dp" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/repeat_type_icon"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/repeat_type_text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/repeat_type"
-                        android:textColor="@color/abc_primary_text_material_dark"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/set_repeat_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/abc_secondary_text_material_dark"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
+                    </android.support.constraint.ConstraintLayout>
+                </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -354,14 +350,16 @@
         android:id="@+id/starred2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/starred1"
-        android:layout_alignStart="@+id/starred1"
-        android:layout_alignTop="@+id/starred1"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="168dp"
         android:clickable="true"
         android:onClick="selectFab2"
         app:fab_size="normal"
         fab:fab_colorNormal="@color/accent"
         fab:fab_colorPressed="@color/fab_pressed"
         fab:fab_icon="@drawable/ic_notifications_on_white_24dp" />
+
 
 </RelativeLayout>
